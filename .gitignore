@@ -172,3 +172,25 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Python cache and virtual environment
+__pycache__/
+*.pyc
+*.pyo
+venv/
+
+# Databases and logs
+*.sqlite
+*.db
+*.DS_Store
+*.csv
+*.txt
+
+# Generated files and folders
+DOCS_DIR/
+wireLogs/
+
+# Packet capture files
+*.pcapng
+*.pcap
+*.cap
