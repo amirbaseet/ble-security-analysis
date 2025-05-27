@@ -2,9 +2,9 @@
 
 # === File Paths ===
 DB_PATH = './DB/BLETrace.db'
-PCAP_FILE = './wireLogs/fakulte.pcapng'
+PCAP_FILE = './wireLogs/watch_capture.pcapng'
 DOCS_DIR = './Docs'
-FOTOS_DIR = './fotos/'
+FOTOS_DIR = './fotos'
 JSON_FILE = "./wireLogs/ble_packets.json"
 REPLAY_TIME_WINDOW_SEC = 5
 # === BLE Distance Estimation Parameters ===

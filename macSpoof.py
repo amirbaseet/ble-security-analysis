@@ -42,8 +42,8 @@ def normalize_data(df):
 
 def generate_fingerprints(df):
     df['fingerprint'] = (
-        # df['company_id'].astype(str) + '|' +
-        # df['manufacturer_data'].astype(str) + '|' +
+        df['company_id'].astype(str) + '|' +
+        df['manufacturer_data'].astype(str) + '|' +
         df['uuid_type'].astype(str) 
         + ':' + df['uuid'].astype(str)
         #making it less sensetive 

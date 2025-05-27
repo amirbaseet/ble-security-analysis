@@ -1,17 +1,16 @@
 import pyshark
 from config import DB_PATH, PCAP_FILE
 
-# Replace this with your actual pcap file path
-# Load the capture file
-capture = pyshark.FileCapture(PCAP_FILE, display_filter='btle')  # Adjust the filter as needed
+# Load the capture file with 'nordic_ble' filter (adjust as needed)
+capture = pyshark.FileCapture(PCAP_FILE, display_filter='nordic_ble')
 
 for index, packet in enumerate(capture):
-    # print(f"\n--- Packet {index + 1} ---")
-    
-    for layer in packet.layers:
-        print(f"Layer: {layer.layer_name}")
+    # Check if the packet has a 'nordic_ble' layer
+    if hasattr(packet, 'nordic_ble'):
+        layer = packet.nordic_ble
+        print(f"\n--- Packet {index + 1} --- (nordic_ble Layer Only)")
         for field_name in layer.field_names:
-            if 'uuid' in field_name.lower():  # Case-insensitive check for 'uuid'
+            if 'uuid' in field_name.lower():  # Check for UUID fields
                 field_value = layer.get_field_value(field_name)
                 print(f"  {field_name}: {field_value}")
 

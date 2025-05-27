@@ -98,7 +98,7 @@ def process_ble_packets_optimized(pcap_file, conn, cursor):
                             continue
 
                 if not any(uuid_data.values()):
-                    print(f"⚠️ Packet at {timestamp} has no UUIDs. Skipping.")
+                    # print(f"⚠️ Packet at {timestamp} has no UUIDs. Skipping.")
                     continue  # Skip packet if no UUIDs found
 
                 # Generate hash efficiently

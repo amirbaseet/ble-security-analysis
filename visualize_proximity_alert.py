@@ -14,6 +14,8 @@ from datetime import datetime, timedelta
 import warnings
 import os
 from config import DB_PATH, DOCS_DIR, FOTOS_DIR
+def ensure_output_dir():
+    os.makedirs(FOTOS_DIR, exist_ok=True)
 
 warnings.filterwarnings('ignore')
 
@@ -24,7 +26,7 @@ class ProximityAlertVisualizer:
     def __init__(self, db_path=DB_PATH, docs_path=DOCS_DIR,png_path=FOTOS_DIR):
         self.db_path = db_path
         self.docs_path = docs_path
-        self.png_path = png_path
+        self.png_path = png_path+'/'
         self.raw_distance_data = None
         self.proximity_alerts = None
         
@@ -429,6 +431,7 @@ class ProximityAlertVisualizer:
         print("   • proximity_alert_summary.txt - Özet rapor")
 
 if __name__ == "__main__":
+    ensure_output_dir()
     # Görselleştirici oluştur ve çalıştır
     visualizer = ProximityAlertVisualizer()
     visualizer.generate_all_visualizations() 

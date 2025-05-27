@@ -16,6 +16,9 @@ import os
 from config import DB_PATH, FOTOS_DIR, DOCS_DIR
 from matplotlib.dates import DateFormatter, HourLocator
 
+def ensure_output_dir():
+    os.makedirs(FOTOS_DIR, exist_ok=True)
+
 warnings.filterwarnings('ignore')
 
 # Turkish font support for matplotlib
@@ -25,7 +28,7 @@ class MacSpoofingVisualizer:
     def __init__(self, db_path=DB_PATH, docs_path=DOCS_DIR,png_path=FOTOS_DIR):
         self.db_path = db_path
         self.docs_path = docs_path
-        self.png_path = png_path
+        self.png_path = png_path+'/'
         self.raw_data = None
         self.fingerprint_changes = None
         self.alerts = None
@@ -401,6 +404,7 @@ DMAC Anomali: {dmac_anomalies_str}
         print("   • mac_spoofing_summary.txt - Özet rapor")
 
 if __name__ == "__main__":
+    ensure_output_dir()
     # Görselleştirici oluştur ve çalıştır
     visualizer = MacSpoofingVisualizer()
     visualizer.generate_all_visualizations() 

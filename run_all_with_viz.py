@@ -4,15 +4,15 @@ import sys
 # List of scripts to run in order
 analysis_scripts = [
     # "logs_to_db.py",
-    "insertMockedData.py",
-    "dbExport.py", 
-    "macSpoof.py",
-    "proximityAlert.py",
-    "replayAttack.py",
-    "create_interactive_dashboard.py",
-    # "visualize_mac_spoofing.py",
-    # "visualize_proximity_alert.py",
-    # "visualize_replay_attack.py",
+    # "insertMockedData.py",
+    # "dbExport.py", 
+    # "macSpoof.py",
+    # "proximityAlert.py",
+    # "replayAttack.py",
+    # "create_interactive_dashboard.py",
+    "visualize_mac_spoofing.py",
+    "visualize_proximity_alert.py",
+    "visualize_replay_attack.py",
     
 ]
 
