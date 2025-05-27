@@ -48,6 +48,10 @@ pip install -r requirements.txt
 ```
 
 ---
+## 🗃️ Required Files
+- wireLogs/: Place your .pcap or .pcapng BLE logs here.
+- Example: wireLogs/your_ble_capture.pcapng
+- The project requires at least one BLE capture file to process.
 
 ## 🏗️ Usage
 
