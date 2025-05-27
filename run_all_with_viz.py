@@ -1,29 +1,33 @@
 import subprocess
 import sys
+from config import OUTPUT_DIR, ensure_output_dirs
+
+# Ensure necessary directories exist
+ensure_output_dirs()
 
 # List of scripts to run in order
 analysis_scripts = [
-    # "logs_to_db.py",
-    # "insertMockedData.py",
-    # "dbExport.py", 
-    # "macSpoof.py",
-    # "proximityAlert.py",
-    # "replayAttack.py",
-    # "create_interactive_dashboard.py",
-    "visualize_mac_spoofing.py",
-    "visualize_proximity_alert.py",
-    "visualize_replay_attack.py",
-    
+    "scripts/logs_to_db.py",
+    "scripts/insertMockedData.py",
+    "scripts/dbExport.py", 
+    "scripts/macSpoof.py",
+    "scripts/proximityAlert.py",
+    "scripts/replayAttack.py",
+    "scripts/create_interactive_dashboard.py",
+    "visualizations/visualize_mac_spoofing.py",
+    "visualizations/visualize_proximity_alert.py",
+    "visualizations/visualize_replay_attack.py",
 ]
 
-visualization_scripts = [    "visualize_complete.py"]
+visualization_scripts = [
+    "visualize_complete.py"
+]
 
 print("🚀 BLE Güvenlik Analizi ve Görselleştirme Pipeline'ı Başlatılıyor...\n")
 
-# İlk olarak analiz scriptlerini çalıştır
+# First, run the analysis scripts
 print("📊 ADIM 1: BLE Güvenlik Analizi")
 print("=" * 50)
-
 for script in analysis_scripts:
     print(f"▶️ {script} çalıştırılıyor...")
     result = subprocess.run(["python", script])
@@ -35,7 +39,7 @@ for script in analysis_scripts:
 print("🎨 ADIM 2: Görselleştirme ve Dashboard Oluşturma")
 print("=" * 50)
 
-# Sonra görselleştirme scriptlerini çalıştır
+# Then run the visualization scripts
 for script in visualization_scripts:
     print(f"▶️ {script} çalıştırılıyor...")
     result = subprocess.run(["python", script])
@@ -46,7 +50,7 @@ for script in visualization_scripts:
 
 print("🎉 Pipeline tamamlandı!")
 print("\n📋 Oluşturulan Çıktılar:")
-print("   📁 ./Docs/ klasöründe:")
-print("      • CSV analiz dosyaları")
-print("      • PNG grafik dosyaları")
-print("      • TXT özet istatistik raporu")
+print("   📁 ./outputs/ klasöründe:")
+print("      • Docs/CSV analiz dosyaları")
+print("      • images/PNG grafik dosyaları")
+print("      • Docs/TXT özet istatistik raporu")

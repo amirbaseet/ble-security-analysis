@@ -14,6 +14,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import plotly.offline as pyo
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from config import DB_PATH, DOCS_DIR, REPLAY_TIME_WINDOW_SEC
 
 class ComprehensiveSecurityDashboard:

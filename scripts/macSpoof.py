@@ -1,10 +1,11 @@
 import sqlite3
 import pandas as pd
 import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from config import DB_PATH, DOCS_DIR
 
-def ensure_output_dir():
-    os.makedirs(DOCS_DIR, exist_ok=True)
+
 
 def load_data():
     conn = sqlite3.connect(DB_PATH)
@@ -126,7 +127,6 @@ def save_csvs(fingerprint_change_events, alerts, rssi_distance_anomalies):
     print("📌 Top_UUIDs.csv ve Top_ManufacturerData.csv oluşturuldu.")
 
 def main():
-    ensure_output_dir()
     df = load_data()
     df = normalize_data(df)
     df = generate_fingerprints(df)

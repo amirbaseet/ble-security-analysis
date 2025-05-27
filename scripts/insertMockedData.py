@@ -1,6 +1,9 @@
 import pyshark
 import sqlite3
 from collections import defaultdict
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from config import DB_PATH
 from utils.db_utils import insert_malicious_attack_data, verify_malicious_data, init_db, insert_packet, insert_uuids, insert_spoof_alert
 

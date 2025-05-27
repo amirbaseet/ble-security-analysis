@@ -1,11 +1,22 @@
 # config.py
+import os
 
 # === File Paths ===
-DB_PATH = './DB/BLETrace.db'
-PCAP_FILE = './wireLogs/watch_capture.pcapng'
-DOCS_DIR = './Docs'
-FOTOS_DIR = './fotos'
-JSON_FILE = "./wireLogs/ble_packets.json"
+# Base output directory
+OUTPUT_DIR = './outputs'
+
+# Specific paths
+DB_PATH = os.path.join(OUTPUT_DIR, 'DB', 'Bledb.db')
+DOCS_DIR = os.path.join(OUTPUT_DIR, 'Docs')
+FOTOS_DIR = os.path.join(OUTPUT_DIR, 'images')
+PCAP_FILE = os.path.join('wireLogs', 'watch_capture.pcapng')
+
+# Ensure output directories exist (optional helper)
+def ensure_output_dirs():
+    os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
+    os.makedirs(DOCS_DIR, exist_ok=True)
+    os.makedirs(FOTOS_DIR, exist_ok=True)
+    
 REPLAY_TIME_WINDOW_SEC = 5
 # === BLE Distance Estimation Parameters ===
 RSSI_REFERENCE = -59  # Measured RSSI at 1 meter
@@ -19,8 +30,6 @@ USE_HASH_FIELDS = [
 
 # Configuration settings for BLE Analysis Project
 
-# Output directory for analysis results
-DOCS_DIR = './Docs/'
 
 # Visualization settings
 VISUALIZATION_DPI = 300

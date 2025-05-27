@@ -2,14 +2,15 @@ import sqlite3
 import pandas as pd
 import numpy as np
 import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from config import DB_PATH, DOCS_DIR
 
 # === Parameters ===
 DISTANCE_THRESHOLD_M = 40      # meters
 MIN_TIME_WINDOW_SEC = 1        # seconds
 
-def ensure_output_dir(path):
-    os.makedirs(path, exist_ok=True)
+
 
 def load_distance_data(db_path):
     conn = sqlite3.connect(db_path)
@@ -101,7 +102,6 @@ def save_anomalies(anomalies, output_file):
     print(f"✔️ {len(df)} anomaly(ies) logged in {output_file}.")
 
 def main():
-    ensure_output_dir(DOCS_DIR)
     
     print("Loading data...")
     df = load_distance_data(DB_PATH)

@@ -13,10 +13,11 @@ import numpy as np
 from datetime import datetime, timedelta
 import warnings
 import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from config import DB_PATH, DOCS_DIR,FOTOS_DIR, REPLAY_TIME_WINDOW_SEC
 
-def ensure_output_dir():
-    os.makedirs(FOTOS_DIR, exist_ok=True)
+
 warnings.filterwarnings('ignore')
 
 # Turkish font support for matplotlib
@@ -25,7 +26,7 @@ plt.rcParams['font.family'] = ['DejaVu Sans']
 class ReplayAttackVisualizer:
     def __init__(self, db_path=DB_PATH, docs_path=DOCS_DIR,png_path=FOTOS_DIR):
         self.db_path = db_path
-        self.docs_path = docs_path
+        self.docs_path = docs_path+'/'
         self.png_path = png_path+'/'
         self.raw_packet_data = None
         self.replay_alerts = None
@@ -549,7 +550,6 @@ class ReplayAttackVisualizer:
         print("   • replay_attack_summary.txt - Özet rapor")
 
 if __name__ == "__main__":
-    ensure_output_dir()
     # Görselleştirici oluştur ve çalıştır
     visualizer = ReplayAttackVisualizer()
     visualizer.generate_all_visualizations() 

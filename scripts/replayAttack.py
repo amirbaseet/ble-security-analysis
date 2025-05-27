@@ -2,10 +2,11 @@ import sqlite3
 import pandas as pd
 from datetime import datetime, timedelta
 import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from config import DB_PATH, DOCS_DIR, REPLAY_TIME_WINDOW_SEC
 
-def ensure_output_dir(path):
-    os.makedirs(path, exist_ok=True)
+
 
 def load_packet_hash_data(db_path):
     conn = sqlite3.connect(db_path)
@@ -53,7 +54,6 @@ def save_alerts(alerts, output_path):
     print(f"✔️ {len(df)} replay attack(s) logged in {output_path}.")
 
 def main():
-    ensure_output_dir(DOCS_DIR)
     df = load_packet_hash_data(DB_PATH)
     alerts = detect_replay_attacks(df, REPLAY_TIME_WINDOW_SEC)
     save_alerts(alerts, os.path.join(DOCS_DIR, "ReplayAttackAlerts.csv"))

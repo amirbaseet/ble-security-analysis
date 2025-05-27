@@ -1,6 +1,8 @@
 import sqlite3
 import pandas as pd
 import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from config import DB_PATH, DOCS_DIR
 
 def ensure_export_dir(path):
